@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Bricolage_Grotesque, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/shared/ThemeProvider'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
+import NavbarWrapper from '@/components/layout/NavbarWrapper'
+import FooterWrapper from '@/components/layout/FooterWrapper'
 import { PersonSchema, WebsiteSchema } from '@/components/shared/StructuredData'
 
 const bricolage = Bricolage_Grotesque({
@@ -11,13 +11,11 @@ const bricolage = Bricolage_Grotesque({
   variable: '--font-bricolage',
   display: 'swap',
 })
-
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
-
 const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains',
@@ -44,13 +42,10 @@ export const metadata: Metadata = {
     'Next.js Developer Kenya',
     'Ken Tirimba Moronge',
     'Ken Moronge',
-    'ADEC Innovations',
     'Lean Six Sigma Kenya',
-    'Process Improvement Kenya',
   ],
   authors: [{ name: 'Ken Tirimba Moronge', url: 'https://kenmoronge.com' }],
   creator: 'Ken Tirimba Moronge',
-  publisher: 'Ken Tirimba Moronge',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -59,20 +54,12 @@ export const metadata: Metadata = {
     description:
       'I turn complex data into clear decisions and build the digital products that bring them to life.',
     siteName: 'Ken Tirimba Moronge',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Ken Tirimba Moronge — Data Analyst & Web Developer',
-      },
-    ],
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ken Tirimba Moronge — Data Analyst & Web Developer',
-    description:
-      'Business Process Analyst & Web Developer based in Kenya.',
+    description: 'Business Process Analyst & Web Developer based in Kenya.',
     images: ['/images/og-image.jpg'],
     creator: '@M_Tirimba',
   },
@@ -87,13 +74,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: 'https://kenmoronge.com',
-  },
-  verification: {
-    // Add your Google Search Console verification token here when ready
-    // google: 'your-token-here',
-  },
+  alternates: { canonical: 'https://kenmoronge.com' },
 }
 
 export default function RootLayout({
@@ -108,25 +89,25 @@ export default function RootLayout({
       className={`${bricolage.variable} ${inter.variable} ${jetbrains.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet" />
         <PersonSchema />
         <WebsiteSchema />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {/* Skip to main content — accessibility */}
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-navy-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
           >
             Skip to main content
           </a>
-          <Navbar />
+          <NavbarWrapper />
           <main id="main-content" tabIndex={-1}>
             {children}
           </main>
-          <Footer />
+          <FooterWrapper />
         </ThemeProvider>
       </body>
     </html>

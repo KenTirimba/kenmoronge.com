@@ -136,7 +136,7 @@ export default function CaseStudyClient({ project }: { project: Project }) {
                 className="mt-6 flex flex-wrap gap-3"
               >
                 {project.liveUrl && (
-                  
+                  <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -147,7 +147,7 @@ export default function CaseStudyClient({ project }: { project: Project }) {
                   </a>
                 )}
                 {project.githubUrl && (
-                  
+                  <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
