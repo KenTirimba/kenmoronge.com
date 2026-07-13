@@ -127,7 +127,10 @@ export default function MarketIntel() {
               ))}
             </Pie>
             <Tooltip
-              formatter={(value: number) => [`${value}%`, 'Market Share']}
+              formatter={(value) => [
+                `${typeof value === 'number' ? value : Number(value ?? 0)}%`,
+                'Market Share',
+              ]}
             />
             <Legend
               formatter={(value) => <span style={{ fontSize: 11 }}>{value}</span>}
